@@ -1,11 +1,14 @@
-
+import {Container, Todos, Input} from './components/Index'
 import './App.css';
 
 function App() {
   return (
-    <>
-      <h1>to do list</h1>
-    </>
+    <div className="App">
+      <Container>
+        <Input/>
+        <Todos/>
+      </Container>
+    </div>
   );
 }
 
