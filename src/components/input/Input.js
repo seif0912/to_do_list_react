@@ -2,24 +2,31 @@ import React from 'react'
 import './input.css'
 
 const Input = ({list, setList}) => {
-    // const idGenerator = (list) =>{
-    //     if (list.length === 0) {
-    //         return 0;
-    //     }else{
-    //         let max = list[0].id;
-    //         for(let i=0; i>list.length; i++){
-    //             if (max < list[i].id){
-    //                 max = list[i].id
-    //             }
-    //         }
-    //         return max + 1
-    //     }
-    // }
+    const idGenerator = (list) =>{
+        if (list.length === 0)
+            return 0
+        let max = list[0].id;
+        for(let i=1; i<list.length; i++)
+            max = max < list[i].id && list[i].id
+        return (max + 1)
+    }
+    function saveLocal(task) {
+        let tasksL;
+        if (localStorage.getItem('tasksL') === null) {
+            tasksL = [];
+        } else {
+            tasksL = JSON.parse(localStorage.getItem('tasksL'));
+        }
+        tasksL.push(task);
+        localStorage.setItem("tasksL", JSON.stringify(tasksL))
+    }
 
     const submitHandler = (e) => {
         e.preventDefault();
-        const task = {task: e.target.task.value, isDone: false}
+        let id = idGenerator(list);
+        const task = {task: e.target.task.value, isDone: false, id}
         setList(prev => [...prev, task])
+        saveLocal(task)
         e.target.task.value = ''
     }
     return (
