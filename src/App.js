@@ -1,4 +1,4 @@
-import {Container, Todos, Input} from './components/Index'
+import {Todos, Input} from './components/Index'
 import './App.css';
 import {useState, useEffect} from 'react'
 
@@ -20,10 +20,12 @@ function App() {
 
   return (
     <div className="App">
-      <Container>
+        <div className="title">
+          <h1>to do list - react</h1>
+          <h3>stored Locally</h3>
+        </div>
         <Input list={list} setList={setList}/>
         <Todos list={list} setList={setList}/>
-      </Container>
     </div>
   );
 }
