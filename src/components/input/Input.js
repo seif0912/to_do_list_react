@@ -31,7 +31,7 @@ const Input = ({list, setList}) => {
     }
     return (
         <form onSubmit={submitHandler} className="webflow-style-input">
-            <input name='task' type='text' placeholder="What's your email?"/>
+            <input required name='task' type='text' placeholder="What's your email?"/>
             <button type="submit">Add</button>
         </form>
     )
